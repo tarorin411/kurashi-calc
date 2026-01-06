@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta name="google-site-verification" content="xRQh6MFzMwW_LbgLPnFaOv6IG_5Fl6Pm4OpNqtFci0s" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>くらしの計算機 | DIY・ハンドメイドに役立つ無料ツール集</title>
+    <meta name="description" content="DIY・ハンドメイド・アウトドアに役立つ無料の計算ツール集。電気計算機、壁紙計算機、コーキング計算機、キャンドル計算機、サーキュラースカート計算機など。">
+    <meta name="keywords" content="計算機,電気計算,壁紙計算,コーキング,キャンドル,サーキュラースカート,DIY,ハンドメイド,無料ツール">
+
+    <!-- OGP -->
+    <meta property="og:title" content="くらしの計算機 | DIY・ハンドメイドに役立つ無料ツール集">
+    <meta property="og:description" content="DIY・ハンドメイド・アウトドアに役立つ無料の計算ツール集">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "くらしの計算機",
+        "description": "DIY・ハンドメイド・アウトドアに役立つ無料の計算ツール集",
+        "url": "https://kurashi-calc.pages.dev/",
+        "author": {
+            "@type": "Person",
+            "name": "LJO"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --teal: #008888;
+            --teal-dark: #006666;
+            --teal-light: #00aaaa;
+            --cream: #FFF8E7;
+            --cream-dark: #F5EED9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--cream);
+            min-height: 100vh;
+            color: #333;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 背景のデコレーション */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 136, 136, 0.08) 0%, rgba(0, 170, 170, 0.04) 100%);
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            bottom: 20%;
+            left: -100px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            right: 5%;
+            animation: float 18s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+            text-align: center;
+            padding: 70px 20px 50px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 20px rgba(0, 136, 136, 0.1);
+            transition: all 0.3s ease;
+            display: block;
+            border: 1px solid rgba(0, 136, 136, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 136, 136, 0.2);
+        }
+
+        .tool-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .tool-icon {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+        }
+
+        .tool-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--teal-dark);
+        }
+
+        .tool-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .tool-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            background: var(--cream);
+            color: var(--teal-dark);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 136, 136, 0.2);
+        }
+
+        .tool-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 15px;
+            color: var(--teal);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: gap 0.2s ease;
+        }
+
+        .tool-card:hover .tool-cta {
+            gap: 10px;
+        }
+
+        .tool-cta::after {
+            content: '→';
+        }
+
+        .section-title {
+            color: var(--teal-dark);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 50px 0 20px;
+            padding-left: 12px;
+            border-left: 4px solid var(--teal);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
+            padding: 50px 20px;
+            color: rgba(255, 255, 255, 0.95);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 25px;
+        }
+
+        .footer-section h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--cream);
+        }
+
+        .footer-section p {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .footer-section a {
+            color: var(--cream);
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                padding: 50px 20px 40px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .tool-card {
+                padding: 20px;
+            }
+
+            .section-title {
+                margin-top: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 背景のデコレーション -->
+    <div class="bg-decoration">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+
+    <section class="hero">
+        <h1>🧮 くらしの計算機</h1>
+        <p>DIY・ハンドメイド・アウトドアに役立つ<br>無料の計算ツール集</p>
+    </section>
+
+    <main class="container">
+
+        <h2 class="section-title">🏕️ アウトドア・車中泊</h2>
+        <div class="tools-grid">
+            <a href="https://vanlife-power-calculator.pages.dev/" class="tool-card" target="_blank">
+                <div class="tool-icon">⚡</div>
+                <div class="tool-title">電気計算機（バンライフ・災害対策）</div>
+                <div class="tool-desc">使用する家電の消費電力から、必要なポータブル電源の容量を自動計算。車中泊・キャンプ・災害時の備えに。</div>
+                <div class="tool-tags">
+                    <span class="tag">バンライフ</span>
+                    <span class="tag">ポータブル電源</span>
+                    <span class="tag">災害対策</span>
+                </div>
+                <span class="tool-cta">計算する</span>
+            </a>
+        </div>
+
+        <h2 class="section-title">🔧 DIY・リフォーム</h2>
+        <div class="tools-grid">
+            <a href="https://wallpaper-calculator.pages.dev/" class="tool-card" target="_blank">
+                <div class="tool-icon">🖼️</div>
+                <div class="tool-title">壁紙計算機</div>
+                <div class="tool-desc">部屋の寸法から必要な壁紙の量を自動計算。窓やドアを除いた正確な面積も算出できます。</div>
+                <div class="tool-tags">
+                    <span class="tag">壁紙</span>
+                    <span class="tag">リフォーム</span>
+                    <span class="tag">面積計算</span>
+                </div>
+                <span class="tool-cta">計算する</span>
+            </a>
+
+            <a href="https://caulking-calculator.pages.dev/" class="tool-card" target="_blank">
+                <div class="tool-icon">🧱</div>
+                <div class="tool-title">コーキング計算機</div>
+                <div class="tool-desc">目地の長さと幅から必要なコーキング材の本数を自動計算。無駄なく材料を購入できます。</div>
+                <div class="tool-tags">
+                    <span class="tag">コーキング</span>
+                    <span class="tag">シーリング</span>
+                    <span class="tag">補修</span>
+                </div>
+                <span class="tool-cta">計算する</span>
+            </a>
+        </div>
+
+        <h2 class="section-title">🎀 ハンドメイド・裁縫</h2>
+        <div class="tools-grid">
+            <a href="https://circle-skirt-calculator.pages.dev/" class="tool-card" target="_blank">
+                <div class="tool-icon">👗</div>
+                <div class="tool-title">サーキュラースカート計算機</div>
+                <div class="tool-desc">ウエストとスカート丈から半径を自動計算。裁断図のシミュレーション付きで初心者でも安心。</div>
+                <div class="tool-tags">
+                    <span class="tag">裁縫</span>
+                    <span class="tag">サーキュラースカート</span>
+                    <span class="tag">型紙</span>
+                </div>
+                <span class="tool-cta">計算する</span>
+            </a>
+
+            <a href="https://candle-calculator.pages.dev/" class="tool-card" target="_blank">
+                <div class="tool-icon">🕯️</div>
+                <div class="tool-title">キャンドル計算機</div>
+                <div class="tool-desc">容器のサイズから必要なワックス量を自動計算。手作りキャンドル・アロマキャンドル制作に。</div>
+                <div class="tool-tags">
+                    <span class="tag">手作りキャンドル</span>
+                    <span class="tag">ワックス量</span>
+                    <span class="tag">アロマ</span>
+                </div>
+                <span class="tool-cta">計算する</span>
+            </a>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>プライバシーポリシー</h4>
+                <p>当サイトでは、Googleアナリティクス等のアクセス解析ツールを使用しています。これらのツールはCookieを使用してデータを収集しますが、個人を特定する情報は含まれません。</p>
+            </div>
+            <div class="footer-section">
+                <h4>免責事項</h4>
+                <p>当サイトの計算結果は参考値であり、実際の使用状況により異なる場合があります。当サイトを利用したことによる損害について、運営者は一切の責任を負いません。<br>当サイトはAmazonアソシエイトプログラムに参加しています。
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>運営者情報</h4>
+                <p>運営者: LJO<br>
+                    お問い合わせ: <a href="mailto:lstar.ojousama@gmail.com">lstar.ojousama@gmail.com</a></p>
+            </div>
+            <p class="copyright">© 2026 LJO. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
